@@ -1,22 +1,12 @@
 package Inno_Assign_2;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Question_02 {
 //	Print the name of all departments in the organization?
-	public ArrayList<String> departments(ArrayList<Employee> list)
+	public List<String> departments(List<Employee> list)
 	{
-		ArrayList<String> departments = new ArrayList<>();
-		
-		for(int i = 0; i < list.size(); i++)
-		{
-			Employee e = list.get(i);
-			
-			if(departments.contains(e.department)) continue;
-			
-			departments.add(e.department);
-		}
-		
-		return departments;
+		return list.stream().map(emp->emp.department).distinct().collect(Collectors.toList());
 	}
 }

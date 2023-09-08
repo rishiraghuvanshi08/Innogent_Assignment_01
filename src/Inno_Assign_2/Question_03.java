@@ -1,19 +1,16 @@
 package Inno_Assign_2;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Question_03 {
 //	What is the average age of male and female employees?
-	public double average(ArrayList<Employee> list)
+	public double average(List<Employee> list)
 	{
-		int sum = 0;
-		for(int i = 0; i < list.size(); i++)
-		{
-			sum += list.get(i).age;
-		}
+		List<Employee> maleEmp = list.stream().filter(e -> "Male".equals(e.gender)).collect(Collectors.toList());
 		
-		double avgAge = (double)(sum / list.size());
+		Integer sum=maleEmp.stream().map(e -> e.age).reduce(0,(c,e)->c+e);
 		
-		return avgAge;
+		return sum/maleEmp.size();
 	}
 }

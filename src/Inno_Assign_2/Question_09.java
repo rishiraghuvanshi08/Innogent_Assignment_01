@@ -1,37 +1,15 @@
 package Inno_Assign_2;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Question_09 {
 //	How many male and female employees are there in the sales and marketing team?
-	public int noOfMaleInSandM(ArrayList<Employee> list)
+	public long noOfMaleInSandM(List<Employee> list)
 	{
-		int count = 0;
-		
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).department.equals("Sales And Marketing"))
-			{
-				if(list.get(i).gender.equals("Male"))
-					count++;
-			}
-		}
-		
-		return count;
+		return list.stream().filter(e -> "Sales And Marketing".equals(e.getDepartment()) && "Male".equals(e.getGender())).count();
 	}
-	public int noOfFemaleInSandM(ArrayList<Employee> list)
+	public long noOfFemaleInSandM(List<Employee> list)
 	{
-		int count = 0;
-		
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).department.equals("Sales And Marketing"))
-			{
-				if(list.get(i).gender.equals("Female"))
-					count++;
-			}
-		}
-		
-		return count;
+		return list.stream().filter(e -> "Sales And Marketing".equals(e.getDepartment()) && "Female".equals(e.getGender())).count();
 	}
 }

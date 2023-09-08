@@ -1,31 +1,16 @@
 package Inno_Assign_2;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Question_01 {
 	//	How many male and female employees are there in the organization?
-	public int maleCount(ArrayList<Employee> list)
+	public int maleCount(List<Employee> list)
 	{
-		int count = 0;
-		
-		for(int i = 0; i < list.size(); i++)
-		{
-			Employee e = list.get(i);
-			if(e.gender.equals("Male")) count++;
-		}
-		
-		return count;
+		return list.stream().filter(emp->"Male".equals(emp.gender)).collect(Collectors.toList()).size();
 	}
-	public int femaleCount(ArrayList<Employee> list)
+	public int femaleCount(List<Employee> list)
 	{
-		int count = 0;
-		
-		for(int i = 0; i < list.size(); i++)
-		{
-			Employee e = list.get(i);
-			if(e.gender.equals("Female")) count++;
-		}
-		
-		return count;
+		return list.stream().filter(emp->"Female".equals(emp.gender)).collect(Collectors.toList()).size();
 	}
 }

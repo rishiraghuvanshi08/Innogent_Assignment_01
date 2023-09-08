@@ -1,51 +1,24 @@
 package Inno_Assign_2;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Question_10 {
 //	What is the average salary of male and female employees?
-	public double avgOfMale(ArrayList<Employee> list)
+	public double avgOfMale(List<Employee> list)
 	{
-		int count = 0;
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).gender.equals("Male"))
-				count++;
-		}
+		List<Employee> maleEmp = list.stream().filter(e -> "Male".equals(e.getGender())).collect(Collectors.toList());
 		
-		double salSum = 0;
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).gender.equals("Male"))
-			{
-				salSum += list.get(i).salary;
-			}
-		}
+		Double sum = maleEmp.stream().map(e -> e.getSalary()).reduce(0d,Double::sum);
 		
-		double avgMale = salSum / count;
-		
-		return avgMale;
+		return sum/maleEmp.size();
 	}
-	public double avgOfFemale(ArrayList<Employee> list)
+	public double avgOfFemale(List<Employee> list)
 	{
-		int count = 0;
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).gender.equals("Female"))
-				count++;
-		}
+		List<Employee> femaleEmp = list.stream().filter(e -> "Female".equals(e.getGender())).collect(Collectors.toList());
 		
-		double salSum = 0;
-		for(int i = 0; i < list.size(); i++)
-		{
-			if(list.get(i).gender.equals("Female"))
-			{
-				salSum += list.get(i).salary;
-			}
-		}
+		Double sum = femaleEmp.stream().map(e -> e.getSalary()).reduce(0d,(e,i)->e+i);
 		
-		double avgMale = salSum / count;
-		
-		return avgMale;
+		return sum/femaleEmp.size();
 	}
 }

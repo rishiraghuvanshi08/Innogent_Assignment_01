@@ -1,21 +1,13 @@
 package Inno_Assign_2;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Question_05 {
 //	Get the names of all employees who have joined after 2015?
-	public ArrayList<String> joinedAfter2015(ArrayList<Employee> list)
+	public List<String> joinedAfter2015(List<Employee> list)
 	{
-		ArrayList<String> listOfNames = new ArrayList<>();
-		
-		for(int i = 0; i < list.size(); i++)
-		{
-			int yearOfJoining = list.get(i).yearOfJoining;
-			if(yearOfJoining > 2015)
-			{
-				listOfNames.add(list.get(i).name);
-			}
-		}
-		return listOfNames;
+		int targetYear = 2015;
+		return list.stream().filter(e -> e.yearOfJoining > targetYear).map(Employee::getName).collect(Collectors.toList());
 	}
 }
