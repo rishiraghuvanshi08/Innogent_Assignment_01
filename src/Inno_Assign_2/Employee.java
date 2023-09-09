@@ -22,7 +22,7 @@ public class Employee {
 	int yearOfJoining;
 
 	double salary;
-	
+
 
 	public double getSalary() {
 		return salary;
@@ -42,11 +42,11 @@ public class Employee {
 		this.yearOfJoining = yearOfJoining;
 		this.salary = salary;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ID = " + id + ", Name = " + name + ", Age = "
-				+ age + ", Gender = " + gender + ", Department = " 
+				+ age + ", Gender = " + gender + ", Department = "
 				+ department + ", Year Of Joining = " + yearOfJoining + ", Salary = " + salary;
 	}
 
@@ -89,5 +89,5 @@ public class Employee {
 	public void setYearOfJoining(int yearOfJoining) {
 		this.yearOfJoining = yearOfJoining;
 	}
-	
+
 }

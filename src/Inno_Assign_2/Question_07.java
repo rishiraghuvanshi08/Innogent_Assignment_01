@@ -11,7 +11,7 @@ public class Question_07 {
 		Map<String, Double> departmentAverageSalaries = list.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment,
                         Collectors.averagingDouble(Employee::getSalary)));
-		
+
 		return departmentAverageSalaries;
 	}
 }
