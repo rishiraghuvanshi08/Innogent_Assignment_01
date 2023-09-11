@@ -1,7 +1,10 @@
 package Inno_Assign_2;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -26,5 +29,18 @@ public class StreamAPI {
 		int even = number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
 		System.out.println(even);
 
+		List<Employee> emp = AddDemoData.addData();
+		
+		Map<String, Object> depMax = emp.stream()
+			.collect(Collectors.groupingBy(
+						Employee::getDepartment,
+						Collectors.collectingAndThen(
+							Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)),
+							maxEmp -> maxEmp.map(Employee::getSalary).orElse(0.0))
+					)
+					
+			);
+		for(Map.Entry<String, Object> map: depMax.entrySet())
+			System.out.println(map.getKey() + " = " + map.getValue());
 	}
 }
