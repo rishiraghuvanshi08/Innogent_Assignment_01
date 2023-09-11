@@ -102,7 +102,14 @@ public class Solutions {
 //		List down the names of all employees in each department?	*****
 		Question_11 q11 = new Question_11();
 
-		System.out.println(q11.empNameInDeps(list));
+		Map<String, List<Employee>> map = q11.empNameInDeps(list);
+		for(Map.Entry<String, List<Employee>> m1 : map.entrySet()){
+			System.out.print(m1.getKey() + " = ");
+			List<Employee> l1 = m1.getValue();
+			l1.forEach(e -> System.out.print(e.getName() + ", "));
+			System.out.println();
+		}
+		
 
 		System.out.println();
 		System.out.println("Solution 12");
